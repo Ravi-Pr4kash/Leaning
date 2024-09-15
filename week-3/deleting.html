@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body id="body">
+  <h4>Todo 1</h4>
+  <h4>Todo 2</h4>
+  <h4>Todo </h4>
+  <button onclick="deleted()">Delete Todo</button>
+
+  <script>
+    function deleted() {
+      const element = document.querySelector("h4")
+      const parentEl = element.parentNode;
+      parentEl.removeChild(element)
+    }
+  </script>
+  
+</body>
+</html>
