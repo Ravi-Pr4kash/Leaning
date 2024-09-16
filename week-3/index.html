@@ -20,11 +20,12 @@
             const value = inputEL.value;
 
             const newDivEl = document.createElement("div");
-            const currentCtr = ctr;
+            // const currentCtr = ctr;
             newDivEl.setAttribute("id", ctr);
-            ctr = ctr + 1;
-            newDivEl.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + currentCtr + ')">Delete</button>';
+            
+            newDivEl.innerHTML = "<div>" + value + '</div><button onclick="deleteTodo(' + ctr + ')">Delete</button>';
             document.querySelector("body").appendChild(newDivEl)
+            ctr = ctr + 1;
         }
     </script>
 </body>
