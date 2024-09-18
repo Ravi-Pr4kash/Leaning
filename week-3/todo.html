@@ -6,29 +6,59 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text">
-    <button onclick="addTodo()">Add todo</button>
+    
+    <div id="parentDiv">
+        <input type="text">
+        <button onclick="addTodo()">Add todo</button>
+    </div>
+        <script>
+            let counter = 1;
+            function addTodo() {
+                const inputEl = document.querySelector("input");
+                const value = inputEl.value;
 
+                if (value == ""){
+                    alert("enter a valid todo")
+                    return;
+                }
 
-    <script>
-        let ctr = 1;
-        function addTodo(){
-            const inputEl = document.querySelector("input")
-        const value = inputEl.value
+                const parentEl = document.getElementById("parentDiv")
 
-        const newDivEl = document.createElement("div");
-        newDivEl.setAttribute("id", "todo-" + ctr)
-        newDivEl.innerHTML ="<div>" + value + '</div><button onclick = "deleteTodo('+ ctr +')">Delete</button>';
-        document.querySelector("body").appendChild(newDivEl);
-        ctr = ctr + 1;
-        }
+                const newDiv = document.createElement("div");
+                newDiv.setAttribute("id", "todo-" + counter)
 
-        function deleteTodo(index){
-            const element = document.getElementById("todo-" + index);
-            const parentEl = element.parentNode;
-            parentEl.removeChild(element)
+                const head = document.createElement("h4");
+                head.textContent = `${counter} . ${value}`
 
-        }
-    </script>
+                const button = document.createElement("button");
+                button.textContent = "Delete"
+                button.setAttribute("onclick", "deleteTodo(" + counter + ")");
+
+                newDiv.appendChild(head)
+                newDiv.appendChild(button)
+
+                parentEl.append(newDiv);
+
+                counter++;
+
+                inputEl.value = "";
+                
+            }
+
+            function deleteTodo(index){
+                const delEl = document.getElementById("todo-" + index);
+                if (delEl) {
+                    delEl.parentNode.removeChild(delEl)
+                }
+
+                const remainingTodos = document.querySelectorAll("id", "todo-");
+    
+    // Reset counter if no todos are left
+                if (remainingTodos.length === 0) {
+                counter = 1;
+             }
+            }
+        </script>
+    </div>
 </body>
 </html>
